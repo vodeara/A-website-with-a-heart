@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моей любимой Сонечке ❤️</title>
+    <meta name="theme-color" content="#0b0d18">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="backgroundGlow"></div>
+<div id="particles"></div>
+
+<main id="scene">
+    <div id="heartContainer">
+        <div id="flash"></div>
+        <svg id="heart" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="heartGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ff9cbc"/>
+                    <stop offset="45%" stop-color="#ff5b87"/>
+                    <stop offset="100%" stop-color="#d60046"/>
+                </linearGradient>
+                <filter id="heartGlow">
+                    <feGaussianBlur stdDeviation="12" result="blur"/>
+                    <feMerge>
+                        <feMergeNode in="blur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                </filter>
+            </defs>
+            <path id="heartShape" filter="url(#heartGlow)" fill="url(#heartGradient)"
+                  d="M256 470 L226 443 C110 340 40 275 40 174 C40 94 98 40 170 40 C214 40 245 63 256 86 C267 63 298 40 342 40 C414 40 472 94 472 174 C472 275 402 340 286 443 Z"/>
+        </svg>
+        <div id="textBox">
+            <h1 id="mainText">Моей любимой Сонечке ❤️</h1>
+            <p id="hint">Нажми на сердце ❤️</p>
+        </div>
+    </div>
+</main>
+
+<!-- Аудио с явным fallback -->
+<audio id="music" preload="auto" loop>
+    <source src="assets\music\musiс.mp3" type="audio/mpeg">
+    <!-- Если не загрузится, пробуем другой путь (можете закомментировать) -->
+</audio>
+
+<script src="script.js"></script>
+</body>
+
+</html>

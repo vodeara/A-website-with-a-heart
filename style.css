@@ -1,0 +1,627 @@
+/* =======================================================
+   Моей любимой Сонечке ❤️
+   style.css
+======================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-family: "Playfair Display", serif;
+
+    background: #090b16;
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+    touch-action: manipulation;
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+
+}
+
+
+/* ===========================================
+            ФОН
+=========================================== */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at top,#2c1837 0%,transparent 45%),
+
+    radial-gradient(circle at bottom,#1d2038 0%,transparent 45%),
+
+    linear-gradient(180deg,#0b0d18,#080914);
+
+    z-index:-5;
+
+}
+
+
+/* ===========================================
+          СВЕТ НА ЗАДНЕМ ПЛАНЕ
+=========================================== */
+
+#backgroundGlow{
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(255,80,140,.15),
+
+    rgba(255,80,140,0));
+
+    filter:blur(90px);
+
+    animation:backgroundFloat 12s ease-in-out infinite;
+
+    z-index:-4;
+
+}
+
+
+@keyframes backgroundFloat{
+
+0%{
+
+transform:
+translateY(-20px)
+scale(1);
+
+}
+
+50%{
+
+transform:
+translateY(20px)
+scale(1.05);
+
+}
+
+100%{
+
+transform:
+translateY(-20px)
+scale(1);
+
+}
+
+}
+
+
+/* ===========================================
+             ОСНОВНАЯ СЦЕНА
+=========================================== */
+
+#scene{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+/* ===========================================
+         КОНТЕЙНЕР СЕРДЦА
+=========================================== */
+
+#heartContainer{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+/* ===========================================
+            SVG СЕРДЦЕ
+=========================================== */
+
+#heart{
+
+    width:min(62vw,520px);
+
+    cursor:pointer;
+
+    transition:
+    transform .35s ease,
+    filter .35s ease;
+
+    filter:
+    drop-shadow(0 0 15px rgba(255,60,120,.45))
+    drop-shadow(0 0 40px rgba(255,60,120,.35));
+
+    animation: heartbeat 2.25s infinite;
+}
+
+
+#heart:hover{
+
+    filter:
+    drop-shadow(0 0 25px rgba(255,110,170,.8))
+    drop-shadow(0 0 60px rgba(255,110,170,.45));
+
+}
+
+
+/* ===========================================
+            ТЕКСТ
+=========================================== */
+
+#textBox{
+
+    position:absolute;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:16px;
+
+    width:70%;
+
+    text-align:center;
+
+    pointer-events:none;
+
+}
+
+
+#mainText{
+
+    color:white;
+
+    font-size:2.3rem;
+
+    font-weight:400;
+
+    line-height:1.3;
+
+    text-shadow:
+    0 0 20px rgba(255,255,255,.18);
+
+    transition:
+    opacity .35s,
+    transform .35s;
+
+}
+
+
+#hint{
+
+    font-size:.95rem;
+
+    color:white;
+
+    opacity:.45;
+
+    letter-spacing:1px;
+
+    transition:
+    opacity .7s ease;
+
+}
+
+
+/* ===========================================
+             ВСПЫШКА
+=========================================== */
+
+#flash{
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+
+    rgba(255,255,255,.95),
+
+    rgba(255,180,210,.55),
+
+    rgba(255,120,170,0));
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform:scale(.2);
+
+}
+
+
+/* ===========================================
+        КОНТЕЙНЕРЫ ЧАСТИЦ
+=========================================== */
+
+#particles{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+
+/* ===========================================
+       КЛАССЫ ДЛЯ JAVASCRIPT
+=========================================== */
+
+.text-hide{
+
+    opacity:0;
+
+    transform:translateY(12px);
+
+}
+
+
+.flash-active{
+
+    animation:
+
+    flashAnimation .45s ease;
+
+}
+
+
+@keyframes flashAnimation{
+
+0%{
+
+opacity:0;
+transform:scale(.2);
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+60%{
+
+opacity:.8;
+
+transform:scale(1.2);
+
+}
+
+100%{
+
+opacity:0;
+
+transform:scale(2);
+
+}
+
+}
+
+
+/* ===========================================
+        АДАПТИВНОСТЬ
+=========================================== */
+
+@media (max-width:700px){
+
+#heart{
+
+width:82vw;
+
+}
+
+#mainText{
+
+font-size:1.45rem;
+
+}
+
+#hint{
+
+font-size:.8rem;
+
+}
+
+}
+
+/* =======================================================
+                СЕРДЦЕБИЕНИЕ
+======================================================= */
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    8% {
+        transform: scale(1.03);
+    }
+
+    12% {
+        transform: scale(1.11);
+    }
+
+    18% {
+        transform: scale(.97);
+    }
+
+    24% {
+        transform: scale(1);
+    }
+
+    36% {
+        transform: scale(1.02);
+    }
+
+    42% {
+        transform: scale(1.07);
+    }
+
+    48% {
+        transform: scale(.985);
+    }
+
+    55% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+/* =======================================================
+                КЛИК ПО СЕРДЦУ
+======================================================= */
+
+.heart-click {
+
+    animation: clickBeat .55s ease;
+
+}
+
+@keyframes clickBeat {
+
+    0% {
+
+        transform: scale(1);
+
+    }
+
+    25% {
+
+        transform: scale(1.18);
+
+    }
+
+    55% {
+
+        transform: scale(.93);
+
+    }
+
+    100% {
+
+        transform: scale(1);
+
+    }
+
+}
+
+/* =======================================================
+                ЧАСТИЦЫ СЕРДЕЧЕК
+======================================================= */
+
+.particle {
+
+    position: absolute;
+
+    font-size: 18px;
+
+    pointer-events: none;
+
+    opacity: .95;
+
+    will-change: transform, opacity;
+
+    animation: particleFly linear forwards;
+
+}
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2)
+            rotate(0deg);
+
+    }
+
+    10% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(var(--x), var(--y))
+            scale(1)
+            rotate(var(--r));
+
+    }
+
+}
+
+/* =======================================================
+                ПЛАВНОЕ ПОЯВЛЕНИЕ ТЕКСТА
+======================================================= */
+
+.text-show {
+
+    animation: textShow .45s ease;
+
+}
+
+@keyframes textShow {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(12px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* =======================================================
+                ПАРАЛЛАКС
+======================================================= */
+
+#heartContainer {
+
+    transition: transform .12s linear;
+
+}
+
+/* =======================================================
+                КРАСИВЫЕ ВЫДЕЛЕНИЯ
+======================================================= */
+
+::selection {
+
+    background: rgba(255,100,170,.3);
+
+    color: white;
+
+}
+
+/* =======================================================
+                СКРОЛЛ ЗАПРЕЩЁН
+======================================================= */
+
+html {
+
+    overflow: hidden;
+
+}
+
+body {
+
+    overscroll-behavior: none;
+
+}
+
+/* =======================================================
+                МОБИЛЬНЫЕ УСТРОЙСТВА
+======================================================= */
+
+@media (max-width:600px) {
+
+    #heart {
+
+        width: 88vw;
+
+    }
+
+    #textBox {
+
+        width: 74%;
+
+    }
+
+    #mainText {
+
+        font-size: 1.3rem;
+
+        line-height: 1.4;
+
+    }
+
+    #hint {
+
+        font-size: .75rem;
+
+    }
+
+    .particle {
+
+        font-size: 15px;
+
+    }
+
+}
